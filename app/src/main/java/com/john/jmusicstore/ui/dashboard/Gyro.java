@@ -11,7 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.subash.agriculturestore.R;
+import com.john.jmusicstore.R;
+import com.john.jmusicstore.R;
 
 public class Gyro extends AppCompatActivity {
     private SensorManager sensorManager;

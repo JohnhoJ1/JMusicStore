@@ -9,8 +9,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.subash.agriculturestore.ui.LoginActivity;
-import com.subash.agriculturestore.ui.RegisterActivity;
+import com.john.jmusicstore.ui.LoginActivity;
+import com.john.jmusicstore.ui.RegisterActivity;
 
 public class LoginRegisterActivity extends AppCompatActivity {
     private Button btnOpenRegisterFragment, btnOpenLoginFragment;
