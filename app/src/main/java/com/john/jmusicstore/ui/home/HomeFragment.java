@@ -1,0 +1,71 @@
+package com.john.jmusicstore.ui.home;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
+import com.john.jmusicstore.R;
+import com.john.jmusicstore.adapter.productAdapter;
+import com.john.jmusicstore.adapter.sliderAdapter;
+import com.john.jmusicstore.api.ProductAPI;
+import com.john.jmusicstore.model.Product;
+import com.john.jmusicstore.url.URL;
+
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+;
+
+public class HomeFragment extends Fragment {
+
+    ViewPager viewPager;
+    private static int currentPage = 0;
+    private static int NUM_PAGES = 0;
+    private HomeViewModel homeViewModel;
+    RecyclerView recyclerView;
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        viewPager = root.findViewById(R.id.viewPager);
+        recyclerView=root.findViewById(R.id.recyclerView);
+        sliderAdapter sliderAdapter = new sliderAdapter(getActivity());
+
+        viewPager.setAdapter(sliderAdapter);
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == NUM_PAGES) {
+                    currentPage = 0;
+                }
+                viewPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 5000, 3000);
+
+        getProduct();
+        return root;
+    }
+
+
+}
