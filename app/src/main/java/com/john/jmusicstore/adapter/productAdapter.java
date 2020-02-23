@@ -58,3 +58,24 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ItemView
 
     }
 
+    @Override
+    public int getItemCount() {
+        return itemList.size();
+    }
+
+    public class ItemViewHolder extends RecyclerView.ViewHolder{
+        ImageView imgImage;
+        TextView tvName, tvDescription, tvPrice, tvOldPrice, tvDiscountRate;
+        RatingBar pop_ratingbar;
+        public ItemViewHolder(@NonNull View itemView){
+            super(itemView);
+            imgImage=itemView.findViewById(R.id.ivProductImage);
+            tvName=itemView.findViewById(R.id.tvProduct_name);
+            tvDescription=itemView.findViewById(R.id.tvDescription);
+            tvPrice=itemView.findViewById(R.id.tvPrice);
+            tvOldPrice=itemView.findViewById(R.id.tvOldPrice);
+            tvDiscountRate=itemView.findViewById(R.id.tvDiscountRate);
+            pop_ratingbar=itemView.findViewById(R.id.pop_ratingbar);
+        }
+    }
+}
