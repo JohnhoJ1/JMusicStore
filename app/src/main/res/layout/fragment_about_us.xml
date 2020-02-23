@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context=".ui.message.AboutUsFragment">
 
     <com.google.android.gms.maps.MapView
@@ -24,13 +25,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:text="We stand for making conscious food-choices. Understanding the processes involved while growing your food is key into resolving some of the world’s critical problems such as that of environmental degradation, economic inequality, health issues and much more. Creating a place to connect growers who are in the organic and wholesome path to provide you with fresh, sustainable food is a start for us to take care of our earth, our mind and body.
-
-Our objective is to give access to the right of knowledge to our consumers. As consumers we lack information about our own food choices. We offer you that very information to help you choose better. This choice will ultimately help protect nature, biodiversity and also empower communities by becoming self-reliant through the sustainable use of natural resources.
-
-Kheti Bazaar is the marketplace for organic products. By creating a market place for organic food we are encouraging more farmers to practice sustainable farming. We are linking our farmers with the consumers, as the knowledge of work, efforts and enthusiasm of these farmers is essential to be understood by us as buyers.We need your support to show them that there are people who care for what they do.
-
-For us and for you, more demand means more products. We can convince the farmers to do more with your help. Join the movement for your own health and the health of this very earth we live in. Our very choice everyday will stand as our conviction against the global food system which hinders the right to healthy food and condemns the nature-based farming system for mass production."
+        android:text="Music Store is home to the worlds largest selection of popular guitars, basses, amplifiers, keyboards, workstations, drums, percussion, microphones, PA systems, DJ equipment, stage lighting, recording software, studio gear and more. Backed by over 260 stores across the country, GuitarCenter.com offers the fastest, easiest way to find all the gear you need in one place. And, while many popular instruments are available for same-day pickup at a store near you, we also offer free shipping on thousands of items to the Guitar Center location of your choice."
         android:textSize="12dp" />
 
 </LinearLayout>

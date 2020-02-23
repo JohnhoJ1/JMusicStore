@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#FFFFFF"
     tools:context=".SplashActivity">
 
     <ImageView
         android:layout_width="378dp"
         android:layout_height="370dp"
-        android:src="@drawable/aglogo" />
+        android:src="@drawable/mlogo" />
 
     <TextView
         android:text="@string/company_tagline"
