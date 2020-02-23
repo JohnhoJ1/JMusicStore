@@ -51,5 +51,33 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    private void login(){
 
+        String phone = etPhone.getText().toString();
+        String password = etPassword.getText().toString();
+
+        LoginBLL loginBLL = new LoginBLL();
+
+        StrictMode.StrictMode();
+        if (loginBLL.checkUser(phone, password)) {
+            Toast.makeText(LoginActivity.this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+//            test();
+            finish();
+        } else {
+            Toast.makeText(LoginActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+//    private void test() {
+//        Notification notification = new NotificationCompat.Builder(this, CreateChannel.CHANNEL_1)
+//                .setSmallIcon(R.drawable.mlogo)
+//                .setContentTitle("User Log In")
+//                .setContentText("You have successfully logged in!!!")
+//                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+//                .build();
+//        notificationManagerCompat.notify(id, notification);
+//        id++;
+//    }
 }
