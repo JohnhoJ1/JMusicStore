@@ -67,5 +67,27 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    private void getProduct() {
+        ProductAPI productApi = URL.getInstance().create(ProductAPI.class);
+        Call<List<Product>> listCall = productApi.getProduct();
+        listCall.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Toast " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                productAdapter itemAdapter = new productAdapter(getActivity(), response.body());
+                recyclerView.setAdapter(itemAdapter);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                itemAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
