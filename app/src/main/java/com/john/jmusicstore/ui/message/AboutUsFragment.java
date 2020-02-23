@@ -42,7 +42,7 @@ public class AboutUsFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(27.706185, 85.330024))
-                .title("Agriculture Store Nepal")
+                .title("J Music Store")
                 .icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
