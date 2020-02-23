@@ -53,6 +53,62 @@ public class RegisterActivity extends AppCompatActivity {
         login_text = findViewById(R.id.login_text);
 
 
+        btnSendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(etPhoneNumber.getText().toString())){
+                    etPhoneNumber.setError("Enter Phone Number");
+                    return;
+                }
+                final int random = (int)(Math.random() * 9999 + 0000);
+                etSMSCode.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        etSMSCode.setText(Integer.toString(random));
+                    }
+                }, 3000);
+            }
+        });
 
+        login_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = etPhoneNumber.getText().toString();
+                String password = etPasswordRegister.getText().toString();
+                String name = etName.getText().toString();
+                String email = etEmail.getText().toString();
+
+                User users = new User(name, email, password, phone);
+
+                UserAPI usersAPI = URL.getInstance().create(UserAPI.class);
+                Call<SignUpResponse> signUpCall = usersAPI.registerUser(users);
+
+                signUpCall.enqueue(new Callback<SignUpResponse>() {
+                    @Override
+                    public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Toast.makeText(RegisterActivity.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+                        Intent intent =  new Intent(RegisterActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                        Toast.makeText(RegisterActivity.this, "Register Unsuccessful" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 }
