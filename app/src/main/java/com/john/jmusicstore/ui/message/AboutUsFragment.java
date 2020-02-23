@@ -38,5 +38,14 @@ public class AboutUsFragment extends Fragment implements OnMapReadyCallback {
         return v;
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(27.706185, 85.330024))
+                .title("Agriculture Store Nepal")
+                .icon(BitmapDescriptorFactory
+                        .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(27.706185, 85.330024), 14f));
+    }
 }
