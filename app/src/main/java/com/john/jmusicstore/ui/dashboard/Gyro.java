@@ -31,5 +31,30 @@ public class Gyro extends AppCompatActivity {
 
     }
 
+    private void sensorGyro() {
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        SensorEventListener gyrolistener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                if (event.values[1]<0){
+                    tvGyro.setText("Phone is Moved Towards Left Side");
+                }
+                else if (event.values[1]>0){
+                    tvGyro.setText("Phone is Moved Towards Right Side");
+                }
+            }
 
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
+        if(sensor != null){
+            sensorManager.registerListener(gyrolistener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+        else {
+            Toast.makeText(this, "No Sensor Found", Toast.LENGTH_SHORT);
+        }
+    }
 }
